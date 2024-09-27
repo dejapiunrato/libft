@@ -19,16 +19,3 @@ int	ft_tolower(int c)
 		c = c + 32;
 	return (c);
 }
-
-/* int main(void)
-{
-	int c;
-
-	c = 0;
-	while (c < 127)
-	{
-		printf("%c", ft_tolower(c));
-		c++;
-	}
-	return (0);
-}  */

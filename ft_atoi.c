@@ -38,35 +38,3 @@ int	ft_atoi(const char *s)
 	}
 	return ((int)(num * neg));
 }
-
-/* int	main(void)
-{
-	const char 	*test[] = {
-		"1234",
-		"-1234",
-		"	1234",
-		"+1234",
-		"abc1234",
-		"1234abc",
-		"2147483648",
-		"-2147483648",
-		"-99999999999",
-		"--1234"
-	};
-	const char	*sep;
-	int			i;
-
-	sep = "==============================\n";
-	i = 0;
-
-	printf("        TESTS FT_ATOI    \n");
-	while (i < sizeof(test) / sizeof(test[1]))
-	{
-		printf("%s\n", sep);
-		printf("Test %d: %s\n", i + 1, test[i]);
-		printf("atoi:		%d\n", atoi(test[i]));
-		printf("ft_atoi:	%d\n\n", ft_atoi(test[i]));
-		i++;
-	}
-
-} */

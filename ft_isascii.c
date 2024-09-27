@@ -18,11 +18,3 @@ int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }
-
-/* int	main(void)
-{
-	int i = 0;
-	printf("%d\n", ft_isascii(i));
-	printf("%d", isascii(i));
-	return (0);
-} */

@@ -32,19 +32,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-/* int	main(void)
-{
-	char	dest1[20];
-	char	dest2[20];
-	char	*src;
-	size_t	n;
-
-	src = "Hola caracola";
-	n = 5;
-	ft_memmove(dest1, src, n);
-	printf("%s\n", dest1);
-	memmove(dest2, src, n);
-	printf("%s", dest2);
-	return (0);
-} */

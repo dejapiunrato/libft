@@ -18,18 +18,3 @@ int	ft_isprint(int c)
 {
 	return ((c < 0 || c > 31) && (c != 127));
 }
-
-/* int	main(void)
-{
-	int i = 0;
-
-	while (i <= 127)
-	{
-		if (ft_isprint(i) == 0 && isprint(i) != 0)
-			printf("%d", i);
-		i++;
-	}
-	if (i == 128)
-		printf("Todo correcto");
-	return (0);
-} */

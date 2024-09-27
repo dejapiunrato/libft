@@ -25,21 +25,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		*d++ = *s++;
 	return (dest);
 }
-
-/* int	main(void)
-{
-	char *src;
-	char dest1[50];
-	char dest2[50];
-	size_t n;
-
-	src = "Hola caracola";
-	n = 10;
-	ft_memcpy(dest1, src, n);
-	dest1[n] = '\0';
-	ft_memcpy(dest2, src, n);
-	dest2[n] = '\0';
-	printf("%s\n", dest1);
-	printf("%s", dest2);
-	return (0);
-} */

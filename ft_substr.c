@@ -30,11 +30,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[i] = '\0';
 	return (sub);
 }
-
-int	main(void)
-{
-	char	*s;
-
-	s = "Hola Caracola";
-	printf("%s", ft_substr(s, 0, 22));
-}
