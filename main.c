@@ -15,6 +15,8 @@
 #define CYAN		"\033[0;36m"
 #define WHITE		"\033[0;37m"
 #define SEP			printf(CYAN "%s" COLOR_RESET, sep);
+#define OK			printf(GREEN "[OK]\n" COLOR_RESET);
+#define ERROR		printf(RED "[ERROR]\n" COLOR_RESET);
 
 void	test_isalpha(void)
 {
@@ -187,12 +189,13 @@ void	test_strlen(void)
 
 void	test_memset(void)
 {
-	char	*test1 = strdup("Hola caracola");
-	char	*test2 = strdup("la cerámica de talavera no es cosa menor, dicho de otra manera, es cosa mayor");
-	char	*test3 = strdup("chao pescao");
-	char	*test4 = strdup("chachi pistachi");
-	char	*test5 = strdup("viva el vino, otra vez");
-	char	*test[] = {test1, test2, test3, test4, test5};
+	char	*test[] = {
+		"Hola caracola",
+		"la cerámica de talavera no es cosa menor, dicho de otra manera, es cosa mayor",
+		"		 ",
+		"",
+		"viva el vino, otra vez"
+		};
 	size_t	n[] = {13, 3, 5, 2, 6};
 	int		c[] = {'\t', 'X', '*', '\0', 'L'};
 	int		i = 0;
@@ -218,6 +221,71 @@ void	test_memset(void)
 			printf("Entrada -------> %s | %c | %zu\n", test[i], (char)c[i], n[i]);
 			printf("memset -------->" RED " %s\n" COLOR_RESET, cpy1);
 			printf("ft_memset ----->" RED " %s\n\n" COLOR_RESET, cpy2);	
+		}
+		free(cpy1);
+		free(cpy2);
+		i++;
+	}
+}
+
+/* void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*tmp;
+
+	tmp = s;
+	while (n--)
+		*tmp++ = 0;
+} */
+
+static void	print_mem(char *str, size_t n)
+{
+	size_t	i = 0;
+
+	while (n--)
+		printf(RED "%d" COLOR_RESET " | ", str[i++]);
+	printf("\n");
+}
+
+void	test_bzero(void)
+{
+	char	*test[] = {
+	"Hola caracola",
+	"la cerámica de talavera no es cosa menor",
+	"		 ",
+	"",
+	"viva el vino, otra vez"
+	};
+	size_t	size = sizeof(test)/sizeof(test[0]);
+	size_t	n[] = {ft_strlen(test[0]), 1, 0, ft_strlen(test[4]), ft_strlen(test[4])};
+	size_t	i = 0;
+
+	while (i < size)
+	{
+		printf("TEST: %d", i + 1);
+		char	*cpy1 = strdup(test[i]);
+		char	*cpy2 = strdup(test[i]);
+
+		bzero(cpy1, n[i]);
+		ft_bzero(cpy2, n[i]);
+		if (memcmp(cpy1, cpy2, n[i]) == 0)
+		{
+			OK;
+			printf("Entrada -------> %s | %zu\n", test[i], n[i]);
+			printf("bzero ---------> ");
+			print_mem(cpy1, n[i]);
+			printf("ft_bzero ------> ");
+			print_mem(cpy2, n[i]);
+			printf("\n\n");
+		}
+		else
+		{
+			ERROR;
+			printf("Entrada -------> %s | %zu\n", test[i], n[i]);
+			printf("bzero ---------> ");
+			print_mem(cpy1, n[i]);
+			printf("ft_bzero ------> ");
+			print_mem(cpy2, n[i]);
+			printf("\n\n");
 		}
 		free(cpy1);
 		free(cpy2);
@@ -264,6 +332,11 @@ int main(void)
 	//ft_memset
 	printf(MAGENTA "Test: memset\n\n" COLOR_RESET);
 	test_memset();
+	SEP;
+
+	//ft_bzero
+	printf(MAGENTA "Test: bzero\n\n" COLOR_RESET);
+	test_bzero();
 	SEP;
 
 	return (0);
