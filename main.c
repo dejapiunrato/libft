@@ -18,6 +18,15 @@
 #define OK			printf(GREEN "[OK]\n" COLOR_RESET);
 #define ERROR		printf(RED "[ERROR]\n" COLOR_RESET);
 
+static void	print_mem(char *str, size_t n)
+{
+	size_t	i = 0;
+
+	while (n--)
+		printf(RED "%d" COLOR_RESET " | ", str[i++]);
+	printf("\n");
+}
+
 void	test_isalpha(void)
 {
 	int		test[] = {'A', 'Z', 'a', 'z', '\n', '9', '['};
@@ -205,7 +214,7 @@ void	test_memset(void)
 
 	while (size--)
 	{
-		printf("TEST: %d", i + 1);
+		printf("TEST: %d ", i + 1);
 		char	*cpy1 = strdup(test[i]);
 		char	*cpy2 = strdup(test[i]);
 
@@ -213,37 +222,22 @@ void	test_memset(void)
 		ft_memset(cpy2, c[i], n[i]);
 		if (memcmp(cpy1, cpy2, n[i]) == 0)
 		{
-			printf(GREEN " [OK]\n" COLOR_RESET);
+			OK;
 		}
 		else
 		{
-			printf(RED "[ERROR]\n" COLOR_RESET);
+			ERROR;
 			printf("Entrada -------> %s | %c | %zu\n", test[i], (char)c[i], n[i]);
-			printf("memset -------->" RED " %s\n" COLOR_RESET, cpy1);
-			printf("ft_memset ----->" RED " %s\n\n" COLOR_RESET, cpy2);	
+			printf("bzero ---------> ");
+			print_mem(cpy1, n[i]);
+			printf("ft_bzero ------> ");
+			print_mem(cpy2, n[i]);
+			printf("\n\n");
 		}
 		free(cpy1);
 		free(cpy2);
 		i++;
 	}
-}
-
-/* void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*tmp;
-
-	tmp = s;
-	while (n--)
-		*tmp++ = 0;
-} */
-
-static void	print_mem(char *str, size_t n)
-{
-	size_t	i = 0;
-
-	while (n--)
-		printf(RED "%d" COLOR_RESET " | ", str[i++]);
-	printf("\n");
 }
 
 void	test_bzero(void)
@@ -261,7 +255,7 @@ void	test_bzero(void)
 
 	while (i < size)
 	{
-		printf("TEST: %d", i + 1);
+		printf("TEST: %d ", i + 1);
 		char	*cpy1 = strdup(test[i]);
 		char	*cpy2 = strdup(test[i]);
 
@@ -270,12 +264,6 @@ void	test_bzero(void)
 		if (memcmp(cpy1, cpy2, n[i]) == 0)
 		{
 			OK;
-			printf("Entrada -------> %s | %zu\n", test[i], n[i]);
-			printf("bzero ---------> ");
-			print_mem(cpy1, n[i]);
-			printf("ft_bzero ------> ");
-			print_mem(cpy2, n[i]);
-			printf("\n\n");
 		}
 		else
 		{
@@ -292,6 +280,60 @@ void	test_bzero(void)
 		i++;
 	}
 }
+
+void	test_memcpy(void)
+{
+	char	*src[] = {
+		"Hola caracola",
+		"hola",
+		"",
+		"   	",
+		"\n",
+		"1234",
+		"Un plato es un plato y un baso es un baso"
+	};
+	char	dest[50];
+	size_t	n[] = {
+		strlen(src[0]) + 1,
+		0,
+		1,
+		strlen(src[3]) + 1,
+		strlen(src[4]) + 10,
+		strlen(src[5]),
+		30
+	};
+	size_t	i = 0;
+	size_t	size = sizeof(src)/sizeof(src[0]);
+
+	while (size--)
+	{
+		printf("TEST: %d ", i + 1);
+		memset(dest, 0, sizeof(dest));
+		char	*cpy1 = memcpy(dest, src[i], n[i]);
+		char	*cpy2 = ft_memcpy(dest, src[i], n[i]);
+
+		if (memcmp(cpy1, cpy2, n[i]) == 0)
+		{
+			OK;
+			printf("Entrada -------> %s | %zu\n", src[i], n[i]);
+			printf("memcpy --------> ");
+			print_mem(cpy1, n[i]);
+			printf("ft_memcpy -----> ");
+			print_mem(cpy2, n[i]);
+		} else {
+			ERROR;
+			printf("Entrada -------> %s | %zu\n", src[i], n[i]);
+			printf("memcpy --------> ");
+			print_mem(cpy1, n[i]);
+			printf("ft_memcpy -----> ");
+			print_mem(cpy2, n[i]);
+			printf("\n");
+		}
+		i++;
+	}
+}
+
+
 
 int main(void)
 {
@@ -337,6 +379,11 @@ int main(void)
 	//ft_bzero
 	printf(MAGENTA "Test: bzero\n\n" COLOR_RESET);
 	test_bzero();
+	SEP;
+
+	//ft_mcmcpy
+	printf(MAGENTA "Test: memcpy\n\n" COLOR_RESET);
+	test_memcpy();
 	SEP;
 
 	return (0);
