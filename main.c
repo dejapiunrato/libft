@@ -255,7 +255,7 @@ void	test_bzero(void)
 
 	while (i < size)
 	{
-		printf("TEST: %d ", i + 1);
+		printf("TEST: %ld ", i + 1);
 		char	*cpy1 = strdup(test[i]);
 		char	*cpy2 = strdup(test[i]);
 
@@ -307,7 +307,7 @@ void	test_memcpy(void)
 
 	while (size--)
 	{
-		printf("TEST: %d ", i + 1);
+		printf("TEST: %ld ", i + 1);
 		memset(dest, 0, sizeof(dest));
 		char	*cpy1 = memcpy(dest, src[i], n[i]);
 		char	*cpy2 = ft_memcpy(dest, src[i], n[i]);
