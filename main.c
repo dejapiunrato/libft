@@ -333,8 +333,6 @@ void	test_memcpy(void)
 	}
 }
 
-
-
 int main(void)
 {
 	char *sep;
