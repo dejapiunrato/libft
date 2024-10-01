@@ -315,11 +315,6 @@ void	test_memcpy(void)
 		if (memcmp(cpy1, cpy2, n[i]) == 0)
 		{
 			OK;
-			printf("Entrada -------> %s | %zu\n", src[i], n[i]);
-			printf("memcpy --------> ");
-			print_mem(cpy1, n[i]);
-			printf("ft_memcpy -----> ");
-			print_mem(cpy2, n[i]);
 		} else {
 			ERROR;
 			printf("Entrada -------> %s | %zu\n", src[i], n[i]);
@@ -328,6 +323,134 @@ void	test_memcpy(void)
 			printf("ft_memcpy -----> ");
 			print_mem(cpy2, n[i]);
 			printf("\n");
+		}
+		i++;
+	}
+}
+
+void	test_memmove(void)
+{
+	char	*src[] = {
+		"Hola caracola",
+		"hola",
+		"",
+		"   	",
+		"\n",
+		"1234",
+		"Un plato es un plato y un baso es un baso"
+	};
+	char	dest[50];
+	size_t	n[] = {
+		strlen(src[0]) + 1,
+		0,
+		1,
+		strlen(src[3]) + 1,
+		strlen(src[4]) + 10,
+		strlen(src[5]),
+		30
+	};
+	size_t	i = 0;
+	size_t	size = sizeof(src)/sizeof(src[0]);
+
+	while (size--)
+	{
+		printf("TEST: %ld ", i + 1);
+		memset(dest, 0, sizeof(dest));
+		char	*cpy1 = memcpy(dest, src[i], n[i]);
+		char	*cpy2 = ft_memcpy(dest, src[i], n[i]);
+
+		if (memcmp(cpy1, cpy2, n[i]) == 0)
+		{
+			OK;
+		} else {
+			ERROR;
+			printf("Entrada -------> %s | %zu\n", src[i], n[i]);
+			printf("memcpy --------> ");
+			print_mem(cpy1, n[i]);
+			printf("ft_memcpy -----> ");
+			print_mem(cpy2, n[i]);
+			printf("\n");
+		}
+		i++;
+	}
+}
+
+void	test_strlcpy(void)
+{
+	char		dest1[50];
+	char		dest2[50];
+	const char	*src[] = {
+		"Hola caracola",
+		"holi",
+		"",
+		"un plato es un plato",
+		"y un vaso es un vaso",		
+	};
+	size_t		n[] = {
+		strlen(src[0]),
+		100,
+		strlen(src[2]),
+		1,
+		strlen(src[4])
+	};
+	size_t		i = 0;
+	size_t		size = sizeof(src)/sizeof(src[0]);
+
+	while (size--)
+	{
+		printf("TEST: %ld ", i + 1);
+		memset(dest1, 0, sizeof(dest1));
+		memset(dest2, 0, sizeof(dest2));
+		size_t	test1 = strlcpy(dest1, src[i], n[i]);
+		size_t	test2 = ft_strlcpy(dest2, src[i], n[i]);
+
+		if (test1 == test2)
+		{
+			OK;
+		} else {
+			ERROR;
+			printf("Entrada ------> %s | %zu\n", src[i], n[i]);
+			printf("strlcpy ------>" RED " %zu" COLOR_RESET " | " RED "%s\n" COLOR_RESET, test1, dest1);
+			printf("ft_strlcpy --->" RED " %zu" COLOR_RESET " | " RED "%s\n" COLOR_RESET, test1, dest2);
+		}
+		i++;
+	}
+}
+
+void	test_strjoin(void)
+{
+	const char *s1[] = {
+		"Hola ",
+		"Viva",
+		"Un plato",
+		"",
+		"hola",
+		""
+	};
+	const char *s2[] = {
+		"caracola",
+		"el vino",
+		" es un plato"
+		"",
+		"",
+		"hola"
+	};
+	size_t	i = 0;
+	size_t	size = sizeof(s1)/sizeof(s1[0]);
+
+	while (size--)
+	{
+		char	*str1 = strjoin(s1[i], s2[i]);
+		char	*str2 = ft_strjoin(s1[i], s2[i]);
+		
+		if (strcmp(str1, str2) == 0)
+		{
+			OK;
+		} else {
+			ERROR;
+			printf("Entrada ------> %s | %s", s1[i], s2[i]);
+			printf("strjoin ------>" RED " %s\n" COLOR_RESET, str1);
+			printf("ft_strjoin ------>" RED " %s\n" COLOR_RESET, str2);
 		}
 		i++;
 	}
@@ -383,6 +506,21 @@ int main(void)
 	printf(MAGENTA "Test: memcpy\n\n" COLOR_RESET);
 	test_memcpy();
 	SEP;
+
+	//ft_mcmmove
+	printf(MAGENTA "Test: memmove\n\n" COLOR_RESET);
+	test_memmove();
+	SEP;
+
+	//ft_mcmcpy
+	printf(MAGENTA "Test: strlcpy\n\n" COLOR_RESET);
+	test_strlcpy();
+	SEP;
+
+	//ft_strjoin
+	printf(MAGENTA "Test: strjoin\n\n" COLOR_RESET);
+	test_strjoin();
+	SEP;	
 
 	return (0);
 }
