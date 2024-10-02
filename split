@@ -1,0 +1,108 @@
+// cuenta cuántas veces aparece c en s
+static int	num_strings(char const *s, char c)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if (s[i] != c)
+		j = 1;
+	while (s[i])
+	{
+		if (s[i] == c && s[i + 1] != c)
+			j++;
+		i++;
+	}
+	if (s[i - 1] == c)
+		j--;
+	return (j);
+}
+
+// array con las posiciones donde se encuentra c
+static int	*n_array(char const *s, char c, int n_strings)
+{
+	int	i;
+	int j;
+	size_t	size;
+	int	*n;
+
+	i = 0;
+	j = 0;
+	size = ft_strlen(s);
+	n = malloc(sizeof(int) * n_strings);
+	if (!n)
+		return (NULL);
+	if (s[i] != c)
+		n[j++] = -1;
+	while (s[i])
+	{
+		if (s[i] == c && s[i + 1] != c)
+		{
+			n[j] = i;
+			j++;
+		}
+		i++;
+	}
+	return (n);
+}
+
+char	*str_creator(const char *s, int start, int end)
+{
+	char	*str;
+	int		i;
+
+	str = malloc(sizeof(char) * (end - start));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (start < end)
+		str[i++] = s[start++];
+	str[i] = '\0';
+	return (str);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		i;
+	int		n;
+	int		*array;
+	char	**strs;
+
+	i = 0;
+	n = num_strings(s, c);
+	array = n_array(s, c, n);
+	strs = malloc(sizeof(char *) * n);
+	while (i < n)
+	{
+		strs[i] = str_creator(s, array[i] + 1, array[i + 1]);
+		i++;
+	}
+	return (strs);
+}
+
+int main(void) {
+    const char *str = "hola mundo  ";
+    char delimiter = ' ';
+    
+    char **result = ft_split(str, delimiter);
+
+    if (result == NULL) {
+        printf("Error al dividir la cadena.\n");
+        return 1;
+    }
+
+    // Imprimir los resultados
+    printf("Resultado de ft_split:\n");
+    for (int i = 0; result[i] != NULL; i++) {
+        printf("%s\n", result[i]);
+    }
+
+    // Liberar la memoria asignada
+    for (int i = 0; result[i] != NULL; i++) {
+        free(result[i]); // Liberar cada string
+    }
+    free(result); // Liberar el array de punteros
+
+    return 0;
+}
