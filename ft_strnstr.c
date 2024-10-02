@@ -18,23 +18,20 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	size_t		i;
 	size_t		j;
-	const char	*ptr;
 
-	ptr = s1;
 	j = 0;
 	if (*s2 == 0)
 		return ((char *)s1);
-	while (j < n && *ptr)
+	while (j < n && s1[j])
 	{
-		i = 0;
-		if (*ptr == s2[i])
+		if (s1[j] == s2[0])
 		{
-			while (ptr[i] == s2[i] && s2[i])
+			i = 0;
+			while (i < n - j && s1[j + i] == s2[i] && s2[i])
 				i++;
 			if (s2[i] == 0)
-				return ((char *)ptr);
+				return ((char *) &s1[j]);
 		}
-		ptr++;
 		j++;
 	}
 	return (NULL);

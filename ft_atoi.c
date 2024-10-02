@@ -22,15 +22,14 @@ int	ft_atoi(const char *s)
 	i = 0;
 	neg = 1;
 	num = 0;
-	if (s[0] == '+' || s[0] == ' ' || (s[0] >= '\t' && s[0] <= '\r'))
+	while ((s[i] == ' ' || (s[i] >= '\t' && s[i] <= '\r')))
 		i++;
-	else if (s[0] == '-')
+	if (s[i] == '+' || s[i] == '-')
 	{
+		if (s[i] == '-')
+			neg = -1;
 		i++;
-		neg = -neg;
 	}
-	else if (!(s[0] >= '0' && s[0] <= '9'))
-		return (0);
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		num = num * 10 + (s[i] - '0');
