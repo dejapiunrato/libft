@@ -501,11 +501,45 @@ void	test_memcmp(void)
 		} else {
 			ERROR;
 			printf("                 s1 --> %s\n", s1[i]);
-			printf("Entrada -------> d2 --> %s\n", s2[i]);
+			printf("Entrada -------> s2 --> %s\n", s2[i]);
 			printf("                 n ---> %zu\n", n[i]);
 			printf("memcmp -------->" RED " %d\n" COLOR_RESET, memcmp(s1[i], s2[i], n[i]));
 			printf("ft_memcmp ----->" RED " %d\n" COLOR_RESET, ft_memcmp(s1[i], s2[i], n[i]));
 		}
+		i++;
+	}
+}
+
+void	test_strtrim(void)
+{
+	const char *s1[] = {
+		"1234Hola1234",
+		"    caracola",
+		"",
+		"",
+		"elemental querido Watson",
+		"\\Pedro y el lobo\\",
+		"aquí me falta una frase de M.Rajoy"
+	};
+	const char *set[] = {
+		"1234",
+		" ",
+		"",
+		"caca",
+		"",
+		"\\lkakjsdfflkjasf",
+		"aqyo"
+	};
+	size_t	size = sizeof(s1)/sizeof(s1[0]);
+	size_t	i = 0;
+
+	while (size--)
+	{
+		char	*str = ft_strtrim(s1[i], set[i]);
+		printf("TEST: %ld\n", i + 1);
+		printf("Entrada -------> s1 ---> %s\n", s1[i]);
+		printf("                 set --> %s\n", set[i]);
+		printf("Salida -------->" RED " %s" COLOR_RESET"\n\n", str);
 		i++;
 	}
 }
@@ -579,6 +613,11 @@ int main(void)
 	//ft_strjoin
 	printf(MAGENTA "Test: strjoin\n\n" COLOR_RESET);
 	test_strjoin();
+	SEP;
+
+	//ft_strtrim
+	printf(MAGENTA "Test: strtrim\n\n" COLOR_RESET);
+	test_strtrim();
 	SEP;
 
 	return (0);
