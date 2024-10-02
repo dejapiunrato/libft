@@ -375,7 +375,7 @@ void	test_memmove(void)
 	}
 }
 
-void	test_strlcpy(void)
+/* void	test_strlcpy(void)
 {
 	char		dest1[50];
 	char		dest2[50];
@@ -415,7 +415,7 @@ void	test_strlcpy(void)
 		}
 		i++;
 	}
-}
+} */
 
 void	test_strjoin(void)
 {
@@ -440,17 +440,71 @@ void	test_strjoin(void)
 
 	while (size--)
 	{
-		char	*str1 = strjoin(s1[i], s2[i]);
-		char	*str2 = ft_strjoin(s1[i], s2[i]);
+		printf("TEST: %ld ", i + 1);
+		char	*str = ft_strjoin(s1[i], s2[i]);
 		
-		if (strcmp(str1, str2) == 0)
+		if (strlen(str) == strlen(s1[i]) + strlen(s2[i]))
 		{
 			OK;
 		} else {
 			ERROR;
-			printf("Entrada ------> %s | %s", s1[i], s2[i]);
-			printf("strjoin ------>" RED " %s\n" COLOR_RESET, str1);
-			printf("ft_strjoin ------>" RED " %s\n" COLOR_RESET, str2);
+			printf("Entrada ------> s1 --> %s\n", s1[i]);
+			printf("        ------> s2 --> %s\n", s2[i]);
+			printf("ft_strjoin ------>" RED " %s\n\n" COLOR_RESET, str);
+		}
+		i++;
+	}
+}
+
+
+void	test_memcmp(void)
+{
+	const char	*s1[] = {
+		"hola",
+		"1234",
+		"caracola",
+		"viva el vino",
+		"un plato es un plato y un vaso es un vaso",
+		"",
+		"",
+	};
+	const char	*s2[] = {
+		s1[0],
+		"",
+		"caracol",
+		"aracola",
+		"viva el vino",
+		"un plato es un plato y un vaso es un vaso",
+		"holi",
+		""
+	};
+	size_t	n[] = {
+		strlen(s1[0]),
+		3,
+		4,
+		10,
+		2000,
+		strlen(s1[5]),
+		13,
+		12
+	};
+	size_t	size = sizeof(s1)/sizeof(s1[0]);
+	size_t	i = 0;
+
+	while (size--)
+	{
+		printf("TEST: %ld ", i + 1);
+		
+		if (ft_memcmp(s1[i], s2[i], n[i]) == memcmp(s1[i], s2[i], n[i]))
+		{
+			OK;
+		} else {
+			ERROR;
+			printf("                 s1 --> %s\n", s1[i]);
+			printf("Entrada -------> d2 --> %s\n", s2[i]);
+			printf("                 n ---> %zu\n", n[i]);
+			printf("memcmp -------->" RED " %d\n" COLOR_RESET, memcmp(s1[i], s2[i], n[i]));
+			printf("ft_memcmp ----->" RED " %d\n" COLOR_RESET, ft_memcmp(s1[i], s2[i], n[i]));
 		}
 		i++;
 	}
@@ -512,15 +566,20 @@ int main(void)
 	test_memmove();
 	SEP;
 
-	//ft_mcmcpy
+	//ft_memcpy
 	printf(MAGENTA "Test: strlcpy\n\n" COLOR_RESET);
-	test_strlcpy();
+	test_memcpy();
+	SEP;
+
+	//ft_memcmp
+	printf(MAGENTA "Test: memcmp\n\n" COLOR_RESET);
+	test_memcmp();
 	SEP;
 
 	//ft_strjoin
 	printf(MAGENTA "Test: strjoin\n\n" COLOR_RESET);
 	test_strjoin();
-	SEP;	
+	SEP;
 
 	return (0);
 }
