@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <limits.h>
 
 #define COLOR_RESET	"\033[0m"
 #define RED			"\033[0;31m"
@@ -580,6 +581,30 @@ void	test_split(void)
 	}
 }
 
+void	test_itoa(void)
+{
+	int	n[] = {
+		INT_MIN,
+		INT_MAX,
+		0,
+		1,
+		-123,
+		-1234567,
+		987245,
+		-9081273,
+	};
+	size_t	size = sizeof(n)/sizeof(n[0]);
+	size_t	i = 0;
+
+	while (i < size)
+	{
+		printf("TEST: %ld\n", i + 1);
+		printf("Entrada -------> %d\n", n[i]);
+		printf("Salida -------->" RED " %s\n\n" COLOR_RESET, ft_itoa(n[i]));
+		i++;
+	}	
+}
+
 int main(void)
 {
 	char *sep;
@@ -659,6 +684,11 @@ int main(void)
 	//ft_split
 	printf(MAGENTA "Test: split\n\n" COLOR_RESET);
 	test_split();
+	SEP;
+
+	//ft_itoa
+	printf(MAGENTA "Test: itoa\n\n" COLOR_RESET);
+	test_itoa();
 	SEP;
 
 	return (0);
