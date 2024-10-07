@@ -35,58 +35,56 @@ static int	count_words(char const *s, char c)
 	return (j);
 }
 
-static char	*str_creator(char const *s, int start, int end)
-{
-	char	*str;
-	int		i;
-
-	i = 0;
-	str = (char *)malloc(sizeof(char) * (end - start + 1));
-	if (!str)
-		return (NULL);
-	while (start < end)
-		str[i++] = s[start++];
-	str[i] = '\0';
-	return (str);
-}
-
-static void	free_memory(char **str, int word)
+static char	**free_memory(char **str, int word)
 {
 	while (word--)
 		free(str[word]);
 	free(str);
+	return (NULL);
+}
+
+static char	*str_creator(char const *s, char c, int start)
+{
+	char	*str;
+	int		i;
+	int		j;
+
+	j = start;
+	while (s[j] && s[j] != c)
+		j++;
+	i = 0;
+	str = (char *)malloc(sizeof(char) * (j - start + 1));
+	if (!str)
+		return (NULL);
+	while (start < j)
+		str[i++] = s[start++];
+	str[i] = '\0';
+	return (str);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
 	int		i;
-	int		j;
 	int		word;
 
 	i = 0;
 	word = 0;
-	str = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
+	str = (char **)ft_calloc((count_words(s, c) + 1), sizeof(char *));
 	if (!str)
 		return (NULL);
 	while (s[i])
 	{
 		if (s[i] != c)
 		{
-			j = i;
-			while (s[j] && s[j] != c)
-				j++;
-			str[word++] = str_creator(s, i, j);
+			str[word++] = str_creator(s, c, i);
 			if (!str[word - 1])
-			{
-				free_memory(str, word - 1);
-				return (NULL);
-			}
-			i = j;
+				return (free_memory(str, word - 1));
+			while (s[i] && s[i] != c)
+				i++;
 		}
 		else
 			i++;
 	}
-	str[word] = NULL;
 	return (str);
 }
