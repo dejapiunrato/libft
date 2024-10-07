@@ -52,14 +52,8 @@ static char	*str_creator(char const *s, int start, int end)
 
 static void	free_memory(char **str, int word)
 {
-	int	i;
-
-	i = 0;
-	while (i < word)
-	{
-		free(str[i]);
-		i++;
-	}
+	while (word--)
+		free(str[word]);
 	free(str);
 }
 
