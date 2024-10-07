@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psevilla <psevilla@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 16:59:36 by psevilla          #+#    #+#             */
+/*   Updated: 2024/10/07 16:59:39 by psevilla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -38,6 +50,19 @@ static char	*str_creator(char const *s, int start, int end)
 	return (str);
 }
 
+static void	free_memory(char **str, int word)
+{
+	int	i;
+
+	i = 0;
+	while (i < word)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
@@ -58,6 +83,11 @@ char	**ft_split(char const *s, char c)
 			while (s[j] && s[j] != c)
 				j++;
 			str[word++] = str_creator(s, i, j);
+			if (!str[word - 1])
+			{
+				free_memory(str, word - 1);
+				return (NULL);
+			}
 			i = j;
 		}
 		else

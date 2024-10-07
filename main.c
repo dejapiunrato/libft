@@ -560,7 +560,7 @@ void	test_split(void)
 		'\0'
 	};
 	size_t	size = sizeof(s)/sizeof(s[0]);
-	int		i = 0;
+	size_t	i = 0;
 	int		j;
 
 	while (i < size)

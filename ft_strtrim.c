@@ -23,16 +23,20 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	j = ft_strlen(s1);
+	if (!s1 || !set)
+		return (ft_strdup(""));
 	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;
 	while (s1[j - 1] && ft_strchr(set, s1[j - 1]))
 		j--;
 	str = malloc(sizeof(char) * (j - i + 1));
-	ptr = str;
-	if (!str || i >= j)
+	if (j < i)
+		return (ft_strdup(""));
+	if (!str)
 		return (NULL);
+	ptr = str;
 	while (i < j)
 		*str++ = s1[i++];
-	str[j + 1] = '\0';
+	str[j - i] = '\0';
 	return (ptr);
 }
