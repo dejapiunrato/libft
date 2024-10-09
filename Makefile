@@ -51,6 +51,8 @@ SRCS = 	ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c
 
+BONUS = ft_lstnew.c
+
 OBJS = $(SRCS:.c=.o)
 
 $(NAME) : $(OBJS)
@@ -60,9 +62,16 @@ all: $(NAME)
 
 %.o : %.c
 	@$(CC) $(CCFLAGS) -c -o $@ $<
+
 clean:
 	@$(RM) $(OBJS)
+
 fclean: clean
-	@$(RM) $(NAME) 
+	@$(RM) $(NAME)
+
 re: fclean all 
+
+bounus : $(OBJS) $(BONUS)
+	@ar crs $(NAME) $(OBJS) $(BOUNUS)
+	
 .PHONY: all clean fclean reminar objetos
