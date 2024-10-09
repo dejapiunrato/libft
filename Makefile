@@ -51,27 +51,28 @@ SRCS = 	ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c
 
-BONUS = ft_lstnew.c
+SRC_BONUS = ft_lstnew.c
 
 OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
 $(NAME) : $(OBJS)
 	@ar crs $(NAME) $(OBJS)
 
 all: $(NAME)
 
+bonus : $(OBJS) $(OBJS_BONUS)
+	@ar crs $(NAME) $(OBJS) $(OBJS_BONUS)
+
 %.o : %.c
 	@$(CC) $(CCFLAGS) -c -o $@ $<
 
 clean:
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all 
-
-bounus : $(OBJS) $(BONUS)
-	@ar crs $(NAME) $(OBJS) $(BOUNUS)
 	
-.PHONY: all clean fclean reminar objetos
+.PHONY: all clean fclean re bonus
