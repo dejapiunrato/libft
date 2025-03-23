@@ -45,7 +45,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_substr.c](https://github.com/dejapiunrato/libft/blob/main/ft_substr.c) |
-| **Prototipo** | char *ft_substr(char const *s, unsigned int start, size_t len); |
+| **Prototipo** | ```char *ft_substr(char const *s, unsigned int start, size_t len);``` |
 | **Parámetros** | **s**: La cadena a partir de la cual crear una subcadena.<br>**start**: El índice del carácter en *s* desde el qu empezar la subcadena.<br>**len**: La longitud máxima de la subcadena. |
 | **Valor devuelto** | Un puntero al primer carácter de la subcadena resultado o NULL si falla la reserva de memoria. |
 | **Funciones autorizadas** | malloc |
@@ -54,7 +54,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_strjoin](https://github.com/dejapiunrato/libft/blob/main/ft_strjoin.c) |
-| **Prototipo** | char *ft_strjoin(char const *s1, char const *s2) |
+| **Prototipo** |```char *ft_strjoin(char const *s1, char const *s2);``` |
 | **Parámetros** | **s1**: La primera cadena.<br>**s2**: La cadena que debe ser añadida a *s1*. |
 | **Valor devuelto** | Puntero al primer carácter de la cadena resultado de unir *s2* a *s1*. |
 | **Funciones autorizadas** | malloc |
@@ -63,7 +63,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_strtrim](https://github.com/dejapiunrato/libft/blob/main/ft_strtrim.c) |
-| **Prototipo** | char *ft_strtrim(char const *s1, char const *set) |
+| **Prototipo** | ```char *ft_strtrim(char const *s1, char const *set);``` |
 | **Parámetros** | **s1**: La cadena que debe ser recortada.<br>**set**: Carácteres a eliminar de la cadena. |
 | **Valor devuelto** | Una cadena igual a *s1* pero sin los carácteres contenidos en *set* que haya al principio y al final. |
 | **Funciones autorizadas** | malloc |
@@ -72,7 +72,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_split](https://github.com/dejapiunrato/libft/blob/main/ft_split.c) |
-| **Prototipo** | char **ft_split(char const *s, char c); |
+| **Prototipo** | ```char **ft_split(char const *s, char c);``` |
 | **Parámetros** | **s**: Cadena a separar en palabras.<br>**c**: Carácter delimitador de palabras. |
 | **Valor devuelto** | Un arreglo de cadenas de texto, cada elemento del arreglo es una palabra contenida en *s* o NULL si falla la reserva de memoria. |
 | **Funciones autorizadas** | malloc y free |
@@ -81,7 +81,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_itoa](https://github.com/dejapiunrato/libft/blob/main/ft_itoa.c) |
-| **Prototipo** | char *ft_itoa(int n); |
+| **Prototipo** | ```char *ft_itoa(int n);``` |
 | **Parámetros** | **n**: Entero a convertir. |
 | **Valor devuelto** | Una cadena que represente el número pasado como parámetro o NULL en caso de fallar la asignación de memoria. |
 | **Funciones autorizadas** | malloc |
@@ -90,7 +90,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_strmapi](https://github.com/dejapiunrato/libft/blob/main/ft_strmapi.c) |
-| **Prototipo** | ft_strmapi(char const *s, char (*f*)(unsigned int, char)); |
+| **Prototipo** | ```ft_strmapi(char const *s, char (*f*)(unsigned int, char));``` |
 | **Parámetros** | **s**: Cadena de texto sobre la que iterar.<br>**f**: Función que aplicar a cada carácter. |
 | **Valor devuelto** | Cadena resultante de aplicar la función *f* a cada carácter de la cadena o NULL en caso de fallar la asignación de memoria. |
 | **Funciones autorizadas** | malloc |
@@ -99,7 +99,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_striteri](https://github.com/dejapiunrato/libft/blob/main/ft_striteri.c) |
-| **Prototipo** | void ft_striteri(char *s, void (*f)(unsigned int, char\*));
+| **Prototipo** | void ft_striteri(char *s, void (*f)(unsigned int, char\*));``` |
 | **Parámetros** | **s**: Cadena que iterar.<br>**f**: Función a aplicar en cada carácter. |
 | **Valor devuelto** | La cadena creada tras la aplicación de *f* en cada carácter de la cadena *s* o NULL en caso de que falle la asignación de memoria. |
 | **Funciones autorizadas** | malloc |
@@ -108,7 +108,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- | 
 | **Nombre de función** | [ft_putchar_fd](https://github.com/dejapiunrato/libft/blob/main/ft_putchar_fd.c) |
-| **Prototipo** | void ft_putchar_fd(char c, int fd); |
+| **Prototipo** | ```void ft_putchar_fd(char c, int fd);``` |
 | **Parámetros** | **c**: Carácter a enviar.<br>**fd**: El *file descriptor* sobre el que escribir. |
 | **Valor devuelto** | Nada. |
 | **Funciones autorizadas** | write |
@@ -117,7 +117,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_putstr_fd](https://github.com/dejapiunrato/libft/blob/main/ft_putstr_fd.c) |
-| **Prototipo** | ft_putstr_fd(char *s, int fd); |
+| **Prototipo** | ```ft_putstr_fd(char *s, int fd);``` |
 | **Parámetros** | **s**: Cadena de texto a enviar.<br>**fd**: El *file descriptor* sobre el que escribir. |
 | **Valor devuelto** | Nada. |
 | **Funciones autorizadas** | write |
@@ -126,7 +126,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- | 
 | **Nombre de función** | [ft_putendl_fd](https://github.com/dejapiunrato/libft/blob/main/ft_putendl_fd.c) |
-| **Prototipo** | void ft_putendl_fd(char *s, int fd); |
+| **Prototipo** | ```void ft_putendl_fd(char *s, int fd);``` |
 | **Parámetros** | **s**: Cadena de texto a enviar.<br>**fd**: El *file descriptor* sobre el que escribir. |
 | **Valor devuelto** | Nada. |
 | **Funciones autorizadas** | write |
@@ -135,7 +135,7 @@ Para implementar las dos funcionessiguientes hay que hacer uso de la función ma
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_putnbr_fd](https://github.com/dejapiunrato/libft/blob/main/ft_putnbr_fd.c) |
-| **Prototipo** | void ft_putnbr_fd(int n, int fd); |
+| **Prototipo** | ```void ft_putnbr_fd(int n, int fd);``` |
 | **Parámetros** | **n**: Número a enviar.<br>**fd**: El *file descriptor* sobre el que escribir. |
 | **Valor devuelto** | Nada. |
 | **Funciones autorizadas** | write |
@@ -154,7 +154,7 @@ typedef struct	s_list
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_lstnew](https://github.com/dejapiunrato/libft/blob/main/ft_lstnew_bonus.c) |
-| **Prototipo** | t_list *ft_lstnew(void *content); |
+| **Prototipo** | ```t_list *ft_lstnew(void *content);``` |
 | **Parámetros** | **content**: El contenido con el que crear el nodo. |
 | **Valor devuelto** | El nuevo nodo. |
 | **Funciones autorizadas** | malloc |
@@ -163,7 +163,7 @@ typedef struct	s_list
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_lstadd_front](https://github.com/dejapiunrato/libft/blob/main/ft_lstadd_front_bonus.c) |
-| **Prototipo** | void ft_lstadd_front(t_list **lst, t_list *new); |
+| **Prototipo** | ```void ft_lstadd_front(t_list **lst, t_list *new);``` |
 | **Parámetros** | **lst**: La dirección de un puntero al primer nodo de una lista.<br>**new**: Un puntero al nodo que añadir al principio de la lista.
 | **Valor devuelto** | Nada. |
 | **Funciones autorizadas** | Ninguna. |
@@ -172,7 +172,7 @@ typedef struct	s_list
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_lstsize](https://github.com/dejapiunrato/libft/blob/main/ft_lstsize_bonus.c) |
-| **Prototipo** | int ft_lstsize(t_list *lst) |
+| **Prototipo** | ```int ft_lstsize(t_list *lst);``` |
 | **Parámetros** | **lst**: Puntero al inicio de una lista. |
 | **Valor devuelto** | Tamaño de la lista. |
 | **Funciones autorizadas** | Ninguna. |
@@ -181,7 +181,7 @@ typedef struct	s_list
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_lstlast](https://github.com/dejapiunrato/libft/blob/main/ft_lstlast_bonus.c) |
-| **Prototipo** | t_list *ft_lstlast(t_list *lst); |
+| **Prototipo** | ```t_list *ft_lstlast(t_list *lst);``` |
 | **Parámetros** | **lst**: Puntero al inicio de una lista. |
 | **Valor devuelto** | Puntero al último nodo de una lista. |
 | **Funciones autorizadas** | Ninguna.
@@ -190,7 +190,7 @@ typedef struct	s_list
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_lstadd_back](https://github.com/dejapiunrato/libft/blob/main/ft_lstadd_back_bonus.c) |
-| **Prototipo** | void ft_lstadd_back(t_list **lst, t_list *new); |
+| **Prototipo** | ```void ft_lstadd_back(t_list **lst, t_list *new);``` |
 | **Parámetros** | **lst**: Puntero al primer nodo de una lista.<br>**new**: Puntero a un nodo que añadir a la lista. |
 | **Valor devuelto** | Nada. |
 | **Funciones autorizadas** | Ninguna. |
@@ -199,7 +199,7 @@ typedef struct	s_list
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_lstdelone](https://github.com/dejapiunrato/libft/blob/main/ft_lstdelone_bonus.c) |
-| **Prototipo** | void ft_lstdelone(t_list *lst, void (*del)(void *)); |
+| **Prototipo** | ```void ft_lstdelone(t_list *lst, void (*del)(void *));``` |
 | **Parámetros** | **lst**: el nodo a liberar.<br>**del**: Un puntero a una función utilizada para liberar el contenido del nodo. |
 | **Valor devuelto** | Nada. |
 | **Funciones autorizadas** | Ninguna. |
@@ -208,7 +208,7 @@ typedef struct	s_list
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_lstclear](https://github.com/dejapiunrato/libft/blob/main/ft_lstclear_bonus.c) |
-| **Prototipo** | void ft_lstclear(t_list **lst, void (*del)(void *)); |
+| **Prototipo** | ```void ft_lstclear(t_list **lst, void (*del)(void *));``` |
 | **Parámetros** | **lst**: Dirección de un puntero a un nodo.<br>**del**: Puntero a una función que elimina el ocntenido de un nodo.
 | **Valor devuelto** | Nada. |
 | **Funciones autorizadas** | free |.
@@ -217,7 +217,7 @@ typedef struct	s_list
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_lstiter](https://github.com/dejapiunrato/libft/blob/main/ft_lstiter_bonus.c) |
-| **Prototipo** | void ft_lstiter(t_list *lst, void (*f)(void *)); |
+| **Prototipo** | ```void ft_lstiter(t_list *lst, void (*f)(void *));``` |
 | **Parámetros** | **lst**: Puntero al primer nodo de una lista.<br>**F**: Puntero a la función que utilizará cada nodo. |
 | **Valor devuelto** | Nada. |
 | **Funciones autorizadas** | Ninguna. |
@@ -226,7 +226,7 @@ typedef struct	s_list
 | | |
 | :--- | :--- |
 | **Nombre de función** | [ft_lstmap](https://github.com/dejapiunrato/libft/blob/main/ft_lstmap_bonus.c) |
-| **Prototipo** | t_list *ft_lstmap(t_list *lst, void *(\*f)(void *), void (*del)(void *)); |
+| **Prototipo** | ```t_list *ft_lstmap(t_list *lst, void *(\*f)(void *), void (*del)(void *));``` |
 | **Parámetros** | **lst**: Puntero al primer nodo de una listt.<br>**f**: Dirección de un puntero a una función usada en la iteración de cada elemento de la lista.<br>**del**: Puntero a una función para eliminar el contenido de un nodo, si es necesario. |
 | **Valor devuelto** | Nueva lista o NULL si la reserva de memoria falla. |
 | **Funciones autorizadas** | malloc y free |
