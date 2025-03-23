@@ -35,7 +35,7 @@ Para implementar las siguientes funciones no es necesario el uso de ninguna func
 | [ft_strnstr](https://github.com/dejapiunrato/libft/blob/main/ft_strnstr.c) | Busca la primera aparición de una subcadena dentro de los primeros *n* carácteres a analizar y devuelve un puntero al inicio de la subcadena. |
 | [ft_atoi](https://github.com/dejapiunrato/libft/blob/main/ft_atoi.c) | Convierte una cadena que contenga un número al principio en el entero que representa, teniendo en cuenta el signo e ignorando los espacios del principio y del final |
 
-Para implementar las dos funcionessiguientes hay que hacer uso de la función malloc():
+Para implementar las dos funciones siguientes hay que hacer uso de la función malloc():
 | Función | Descripción |
 | :--- | :--- |
 | [ft_calloc](https://github.com/dejapiunrato/libft/blob/main/ft_calloc.c) | Reserva un espacio de la memoria de un tamaño en bytes dado y lo rellena con ceros. |
