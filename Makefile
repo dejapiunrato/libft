@@ -12,6 +12,7 @@ OBJDIR = objects
 SRCS =	sources/ft_printf/ft_printf_utils.c \
 		sources/ft_printf/ft_printf.c \
 		sources/libft/ft_atoi.c \
+		sources/libft/ft_atol.c \
 		sources/libft/ft_bzero.c \
 		sources/libft/ft_calloc.c \
 		sources/libft/ft_isalnum.c \
