@@ -6,7 +6,7 @@
 /*   By: psevilla <psevilla@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:20:55 by psevilla          #+#    #+#             */
-/*   Updated: 2025/04/10 17:50:04 by psevilla         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:25:27 by psevilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long	ft_atol(char *s)
 {
-	long	num;
-	int		neg;
-	int		i;
+	long long	num;
+	int			neg;
+	int			i;
 
 	num = 0;
 	neg = 1;
@@ -34,5 +34,5 @@ long	ft_atol(char *s)
 		num = num * 10 + (s[i] - '0');
 		i++;
 	}
-	return (neg * num);
+	return ((long)(neg * num));
 }
